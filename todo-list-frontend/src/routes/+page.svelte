@@ -123,13 +123,13 @@
 </head>
 
 <body>
-    <h1>
-        POGGERS To-do list
-    </h1>
+    <h1>POGGERS To-do list</h1>
     <div style= 
         "width: 525px; height: 600px;
         border: 2px solid black; background-color: #79286C;
-        border-radius:10px"
+        border-radius:10px;
+        display: flex
+        "
     >
 
         <div style=
@@ -137,19 +137,18 @@
             width: 250px; height: 580px;
             position: relative; left: 270px; top: 10px;
             border: 2px solid black; background-color: #00FF1C;
-            border-radius:10px
+            border-radius:10px;
             "
         >
-            <h2>
-                Tasks
-            </h2>
+            <h2>Tasks</h2>
             {#each TodoList as task}
                 <div style=
                     "
                     width: 230px; height 100px;
                     position: relative; left: 5px; top: 5px;
                     border: 2px solid black; background-color: #FFB000;
-                    border-radius: 50px
+                    border-radius: 50px;
+                    display: flex
                     "
                 >
                     <p style= "position:relative; right: -10px">
