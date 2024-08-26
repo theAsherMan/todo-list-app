@@ -119,68 +119,73 @@
     <style>
         h1 {text-align: center}
         h2 {text-align: center}
+        div {
+            display: flex
+            }
     </style>
 </head>
 
 <body>
     <h1>POGGERS To-do list</h1>
     <div style= 
-        "width: 525px; height: 600px;
+        "
+        padding: 5px;
+
         border: 2px solid black; background-color: #79286C;
         border-radius:10px;
-        display: flex
         "
     >
-
-        <div style=
-            "
-            width: 250px; height: 580px;
-            position: relative; left: 270px; top: 10px;
-            border: 2px solid black; background-color: #00FF1C;
-            border-radius:10px;
-            "
-        >
-            <h2>Tasks</h2>
-            {#each TodoList as task}
-                <div style=
-                    "
-                    width: 230px; height 100px;
-                    position: relative; left: 5px; top: 5px;
-                    border: 2px solid black; background-color: #FFB000;
-                    border-radius: 50px;
-                    display: flex
-                    "
-                >
-                    <p style= "position:relative; right: -10px">
-                        {task.name}
-                    </p>
-                    <!--    get this to align to the right of parragraph    -->
-                    <p>
-                        {task.isDone ? "x" : " "}
-                    </p>
-                    <!--    get this button to align to the right of the parragraph    -->
-                    <button on:click={() => deleteTask(task.id)}>delete task</button>
-                    {#if task.isDone}
-                        <button on:click={() => markAsIncomplete(task.id)}> mark as not done </button>
-                    {:else}
-                        <button on:click={() => markAsDone(task.id)}> mark as done </button>
-                    {/if}
-                </div>
-            {/each}
-        </div>
-
-
         <div style="
-        width: 250px; height: 150px;
-        position: relative; left: 10px; top: -574px;
-        border: 2px solid black; background-color: #808080;
-        border-radius:10px
+                flex-direction: column;
+
+                padding: inherit;
+                border: 2px solid black; background-color: #FFA500;
+                border-radius: 10px;
         ">
             <h2>Add new task</h2>
-            <input style= "position: relative; left: 40px" bind:value={newTaskName}>
-            <div style="position: relative; left: 87px; top: 10px">
-                <button on:click={() => addTask(newTaskName)}> Add Task </button>
+            <div>
+                <input bind:value={newTaskName} type='text' placeholder='add new task'>
+                <button on:click={() => {addTask(newTaskName)}}>=></button>
+        
             </div>
+        </div>
+        <div style=
+                "
+                width: 100%;
+                justify-content: center;
+                flex-direction: column;
+
+                padding: inherit;
+                border: 2px solid black; background-color: #ADD8E6;
+                border-radius:10px;
+                "
+        >
+            <h2>TASKS</h2>
+            {#each TodoList as task}
+                {#if task.isDone}
+                    <div style="
+                    padding: inherit;
+                    border: 2px solid black; background-color: #00FF1C;
+                    border-radius: 10px;
+                    padding: inherit;
+                    ">
+                        <input bind:checked={task.isDone} type="checkbox">
+                        {task.name}
+                        <button style="margin-left: auto" on:click={() => deleteTask(task.id)}>remove task</button>
+                    </div>
+                {:else}
+                    <div style="
+                    padding: inherit;
+                    border: 2px solid black; background-color: #FF0000;
+                    border-radius: 10px;
+                    padding: inherit;
+                    ">
+                        <input bind:checked={task.isDone} type="checkbox">
+                        {task.name}
+                        <button style="margin-left: auto" on:click={() => deleteTask(task.id)}>remove task</button>
+                    </div>
+                {/if}
+            {/each}
         </div>
     </div>
 </body>
